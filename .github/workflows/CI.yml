@@ -13,7 +13,12 @@ jobs:
       - name: Runs Git-Actions
         uses: actions/checkout@v4
       
-      - name: Run Unit test
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      
+      - name: Run Unit test     
         run: pytest      
       
       - name: Login to Docker Hub
