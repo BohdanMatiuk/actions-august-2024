@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
 
-  workflow_dispatch:
+  # workflow_dispatch:
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      - name: Build and push
+      - name: Build Image (dont push)
         uses: docker/build-push-action@v6
         with:
           push: false
@@ -40,3 +40,9 @@ jobs:
         uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: '${{ secrets.DOCKERHUB_USERNAME }}/flask-app:1.0.0'
+
+      - name: Push Image
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/flask-app:1.0.0
