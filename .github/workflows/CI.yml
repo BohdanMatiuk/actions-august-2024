@@ -5,15 +5,15 @@ on:
     branches: [ "main" ]
 
   workflow_dispatch:
-    # inputs: 
-    #   docker_image: 
-    #     description: 'Enter Image Name'
-    #     required: true
-    #     default: ''
-    #   docker_tag: 
-    #     description: 'Enter Image Version'
-    #     required: true
-    #     default: ''
+    inputs: 
+      docker_image: 
+        description: 'Enter Image Name'
+        required: true
+        default: ''
+      docker_tag: 
+        description: 'Enter Image Version'
+        required: true
+        default: ''
 
 
 jobs:
